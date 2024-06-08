@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  mongodb:
+    container_name: chat-mongodb
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+    networks:
+      - backend
+
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_BASICAUTH_USERNAME=${MONGO_DB_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGO_DB_PASSWORD}
+      - ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017
+    depends_on:
+      - mongodb
+    networks:
+      - backend
+    ports:
+      - 8081:8081
+    healthcheck:
+      test:  wget --quiet --tries=3 --spider http://admin:admin@mongo-express:8081 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  dbdata6:
+
+networks:
+  backend:
+    driver: bridge

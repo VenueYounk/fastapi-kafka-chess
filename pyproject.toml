@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "python-chess"
+version = "0.1.0"
+description = ""
+authors = ["Vladimir Kultanov <v.kultanov@blackhub.games>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+chess = "^1.10.0"
+pytest = "^8.2.2"
+motor = "^3.4.0"
+punq = "^0.7.0"
+pydantic-settings = "^2.3.1"
+ordered-set = "^4.1.0"
+pytest-asyncio = "^0.23.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
