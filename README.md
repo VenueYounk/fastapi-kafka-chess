@@ -20,15 +20,17 @@ make app
 make storages
 ```
 
-    This command builds and starts the application using Docker Compose.
+This command builds and starts the application using Docker Compose.
 
-    or
+or
 
 ```bash
 make all
 ```
 
 Access the application at `http://localhost:8000`.
+
+you can also use Mongo Express at `http://localhost:8081`.
 
 ### Stop the Application
 
@@ -38,7 +40,6 @@ make storages-down
 ```
 
 This command stops the application and removes the containers.
-
 
 ## Contributing
 
