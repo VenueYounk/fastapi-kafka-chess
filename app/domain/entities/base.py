@@ -7,4 +7,7 @@ from uuid import UUID, uuid4
 @dataclass(eq=False, kw_only=True)
 class BaseEntity(ABC):
     oid: UUID = field(default_factory=uuid4)
-    created_at: int = field(default_factory=datetime.now)
+    created_at: datetime = field(
+        default_factory=datetime.now,
+        kw_only=True,
+    )
